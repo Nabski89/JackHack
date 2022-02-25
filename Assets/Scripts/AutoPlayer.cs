@@ -31,6 +31,8 @@ public class AutoPlayer : MonoBehaviour
             if (Computer.Hold == true && Player.Hold == true)
             {
                 Debug.Log("New Hand");
+                MoneyManager.BetWin = 10;
+                MoneyManager.BetLose = 10;
                 Computer.NewHand();
                 Player.NewHand();
                 timer += 30;

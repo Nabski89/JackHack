@@ -27,28 +27,32 @@ public class CameraScript : MonoBehaviour
         transform.position = position;
 
         //reuse that vector3, but it's time to lay out the cards in the shop
-        position.x = 20;
-        position.y = 2;
+        position.x = 20.6f;
+        position.y = 1;
         position.z = 0;
 
         Vector3 newScale = transform.localScale;
-        newScale.x = .5f;
-        newScale.y = .5f;
+        newScale.x = .6f;
+        newScale.y = .6f;
         newScale.z = -1;
 
         AutoPlayer.timer = 64000;
 
         foreach (var CardToShop in GameObject.FindObjectsOfType<Card>())
         {
-            position.x += 1;
-            CardToShop.transform.position = position;
-            CardToShop.transform.localScale = newScale;
-            if (position.x == 20 + 13)
+            if (CardToShop.PlayerCard == true)
             {
-                position.y += 2;
-                position.x = 20;
+                position.x += 1.33f;
+                CardToShop.transform.position = position;
+                CardToShop.transform.localScale = newScale;
+                                    Debug.Log(position.x);
+                if (position.x > 20.5f + 17.29f)
+                {
+                    Debug.Log("Second Row");
+                    position.y += 2.3f;
+                    position.x = 20.6f;
+                }
             }
-
         }
     }
 

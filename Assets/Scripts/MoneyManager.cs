@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class MoneyManager : MonoBehaviour
 {
-    public static int MoneyAmount = 100;
-    public static int BetDefault = 10;
-    public static int BetWin = 10;
-    public static int BetLose = 10;
+    public static float MoneyAmount = 100;
+    public static float BetDefault = 10;
+    public static float BetWin = 10;
+    public static float BetLose = 10;
     Text Textfield;
 
     // Start is called before the first frame update
