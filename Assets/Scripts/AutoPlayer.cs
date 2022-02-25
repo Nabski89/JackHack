@@ -10,7 +10,7 @@ public class AutoPlayer : MonoBehaviour
     public Field Computer;
     public Field Player;
 
-    public int timer = 30;
+    public static int timer = 30;
     void Start()
     {
         QualitySettings.vSyncCount = 0;
@@ -38,6 +38,7 @@ public class AutoPlayer : MonoBehaviour
             //computer plays after the player
             if (Computer.Hold == false && Player.Hold == true && timer < 0)
             {
+                Computer.FlipFirstCardCard();
                 Debug.Log("Computer Hit");
                 Computer.Hit();
                 timer += 30;

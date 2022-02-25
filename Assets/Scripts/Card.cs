@@ -10,6 +10,7 @@ public class Card : MonoBehaviour
     public int ModCount = 0;
     public int ModTier = 0;
     public int SuitNum = 2;
+    public bool Ace = false;
 
     int PointMod = 0;
     // Start is called before the first frame update
@@ -30,9 +31,13 @@ public class Card : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlayCard()
     {
-
+        Field HandPlayed = gameObject.GetComponentInParent(typeof(Field)) as Field;
+        if (Ace == true)
+        {
+            HandPlayed.AceCount += 1;
+            Debug.Log("AcePlayed");
+        }
     }
 }

@@ -11,6 +11,7 @@ public class Field : MonoBehaviour
     public int handsize = 0;
     public int Score = 0;
     public bool Hold = false;
+    public int AceCount = 0;
 
     public int BustValue = 21;
 
@@ -44,7 +45,7 @@ public class Field : MonoBehaviour
 
             //set the card position
             Vector3 position = CardDealt.transform.position;
-            position.x = ((2.5f * handsize) - 7.5f);
+            position.x = ((2.7f * handsize) - 7.39f);
             CardDealt.transform.position = position;
 
             //flip the card
@@ -53,6 +54,7 @@ public class Field : MonoBehaviour
             CardDealt.transform.localScale = newScale;
 
             //point check
+            CardDealt.PlayCard();
             Score += CardDealt.Points;
             Debug.Log("We are at " + Score);
 
@@ -80,6 +82,13 @@ public class Field : MonoBehaviour
                     }
                 }
             }
+
+            if (Score > BustValue && AceCount > 0)
+            {
+                AceCount -= 1;
+                Score -= 10;
+                 Debug.Log("Ace Used");
+            }
             // check if bust
             if (Score > BustValue)
             {
@@ -105,6 +114,7 @@ public class Field : MonoBehaviour
 
     public void NewHand()
     {
+        AceCount = 0;
         Hold = false;
         Score = 0;
         //move cards to deck
