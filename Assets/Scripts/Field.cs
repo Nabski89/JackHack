@@ -46,7 +46,11 @@ public class Field : MonoBehaviour
             //set the card position
             Vector3 position = CardDealt.transform.position;
             position.x = ((2.7f * handsize) - 7.39f);
-            CardDealt.transform.position = position;
+//            CardDealt.transform.position = position;
+            CardDealt.TarX = ((2.7f * handsize) - 7.39f);
+            CardDealt.TarY = transform.position.y;
+            CardDealt.NeedMove = true;
+
 
             //flip the card
             Vector3 newScale = CardDealt.transform.localScale;
@@ -70,7 +74,7 @@ public class Field : MonoBehaviour
             {
                 Hold = true;
 
-                if (Computer == true && Score <= 21)
+                if (Computer == true && Score <= BustValue)
                 {
                     if (Opponent.Score > Score)
                     {
@@ -80,6 +84,7 @@ public class Field : MonoBehaviour
                     {
                         MoneyManager.MoneyAmount -= MoneyManager.BetLose;
                     }
+                    BustValue = 21;
                 }
             }
 
@@ -87,7 +92,7 @@ public class Field : MonoBehaviour
             {
                 AceCount -= 1;
                 Score -= 10;
-                 Debug.Log("Ace Used");
+                Debug.Log("Ace Used");
             }
             // check if bust
             if (Score > BustValue)
@@ -100,11 +105,13 @@ public class Field : MonoBehaviour
                 {
                     MoneyManager.MoneyAmount -= MoneyManager.BetLose;
                     Opponent.Hold = true;
+                    BustValue = 21;
                 }
                 //did the computer bust, win money
                 if (Computer == true)
                 {
                     MoneyManager.MoneyAmount += MoneyManager.BetWin;
+                    BustValue = 21;
                 }
 
             }

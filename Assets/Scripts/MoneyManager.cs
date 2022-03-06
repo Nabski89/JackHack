@@ -9,6 +9,7 @@ public class MoneyManager : MonoBehaviour
     public static float BetDefault = 10;
     public static float BetWin = 10;
     public static float BetLose = 10;
+    public static float CursePoints = 0;
     Text Textfield;
 
     // Start is called before the first frame update
